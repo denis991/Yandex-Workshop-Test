@@ -3,13 +3,16 @@ import './DropdownMenu.css';
 
 type DropdownMenuProps = {
 	trigger: ReactElement<{ onClick: () => void }>;
-	content: ReactElement<{ children: string }>[];
-	onItemSelect?: (item: string) => void;
+	content: {
+		label: string;
+		icon: ReactElement;
+		onClick: () => void;
+	}[];
 };
 
 type Position = 'bottom-right' | 'top-right' | 'bottom-left' | 'top-left';
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content, onItemSelect }) => {
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [position, setPosition] = useState<Position>('bottom-right');
 	const dropdownRef = useRef<HTMLDivElement>(null);
@@ -55,11 +58,8 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content, onItemSel
 		}
 	}, [isOpen]);
 
-	const handleItemClick = (child: string) => {
-		console.log(`Clicked on item: ${child}`);
-		if (onItemSelect) {
-			onItemSelect(child);
-		}
+	const handleItemClick = (onClick: () => void) => {
+		onClick();
 		setIsOpen(false);
 	};
 
@@ -75,12 +75,10 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content, onItemSel
 
 			{isOpen && (
 				<div className={`content ${position}`}>
-					{content.map((child, index) => (
-						<div
-							key={index}
-							className='item'
-							onClick={() => handleItemClick(child.props.children as string)}>
-							{child}
+					{content.map((item, index) => (
+						<div key={index} className='item' onClick={() => handleItemClick(item.onClick)}>
+							{item.icon}
+							{item.label}
 						</div>
 					))}
 				</div>

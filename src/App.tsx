@@ -1,22 +1,41 @@
 import React from 'react';
 import DropdownMenu from './components/DropdownMenu/DropdownMenu';
+import { Share2, Edit, Trash } from 'react-feather'; // Подключение иконок из feather-icons
 
 const App: React.FC = () => {
-  const handleItemClick = (item: string) => {
-    console.log(`Selected item: ${item}`);
+  const handleShareClick = () => {
+    console.log('Share item clicked');
+  };
+
+  const handleEditClick = () => {
+    console.log('Edit item clicked');
+  };
+
+  const handleDeleteClick = () => {
+    console.log('Delete item clicked');
   };
 
   return (
     <div>
       <DropdownMenu
-        trigger={<button>˚…˚</button>}
+        trigger={<button>Open Dropdown</button>}
         content={[
-          <span key="1">Item 1</span>,
-          <span key="2">Item 2</span>,
-          <span key="3">Item 3</span>,
-          <span key="4">Item 4</span>
+          {
+            label: 'Поделиться в социальных сетях',
+            icon: <Share2 />,
+            onClick: handleShareClick
+          },
+          {
+            label: 'Редактировать страницу',
+            icon: <Edit />,
+            onClick: handleEditClick
+          },
+          {
+            label: 'Удалить страницу',
+            icon: <Trash />,
+            onClick: handleDeleteClick
+          }
         ]}
-        onItemSelect={handleItemClick}
       />
     </div>
   );
