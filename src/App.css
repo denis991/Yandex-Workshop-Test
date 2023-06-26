@@ -1,103 +1,35 @@
 .dropdown-container {
-  display: flex;
-}
-
-.down-right {
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.up-right {
-  justify-content: flex-end;
-  align-items: flex-start;
-}
-
-.down-left {
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-
-.up-left {
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-/*
-.dropdown-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: grid;
+	grid-template-areas:
+		'A B'
+		'C D';
+	grid-template-columns: repeat(2, 50%);
+	grid-template-rows: repeat(2, 50%);
+	width: 100vw;
 	height: 100vh;
+	background-color: #f9f9f9;
 }
 
-.dropdown-container > div {
-	margin: 10px;
+.dropdown-wrapper {
+	padding: 20px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
-	background-color: #f7f7f7;
-	padding: 10px;
+	background-color: #fff;
 }
-
-button {
-	background: none;
-	border: none;
-	padding: 0;
-	margin: 0;
-	cursor: pointer;
+.up-left {
+	grid-area: A;
 }
-
-.dropdown-menu {
-	position: absolute;
-	background-color: #f7f7f7;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	min-width: 160px;
-	padding: 8px 0;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-	z-index: 1;
+.up-right {
+	grid-area: B;
 }
-
-.dropdown-menu-item {
-	display: flex;
-	align-items: center;
-	padding: 8px 16px;
-	color: #333;
-	font-size: 14px;
-	transition: background-color 0.3s;
-	cursor: pointer;
+.down-left {
+	grid-area: C;
 }
-
-.dropdown-menu-item:hover {
-	background-color: #e7e7e7;
+.down-right {
+	grid-area: D;
 }
-
-.dropdown-menu-item-icon {
-	margin-right: 8px;
-}
-
-.up-left .dropdown-menu {
-	top: auto;
-	bottom: calc(100% + 8px);
-	right: auto;
-	left: 0;
-}
-
-.up-right .dropdown-menu {
-	top: auto;
-	bottom: calc(100% + 8px);
-	right: 0;
-	left: auto;
-}
-
-.down-left .dropdown-menu {
-	top: calc(100% + 8px);
-	bottom: auto;
-	right: auto;
-	left: 0;
-}
-
+.up-right .dropdown-menu,
 .down-right .dropdown-menu {
-	top: calc(100% + 8px);
-	bottom: auto;
-	right: 0;
-	left: auto;
-} */
+	display: flex;
+	justify-content: flex-end;
+}
