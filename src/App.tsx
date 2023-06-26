@@ -9,7 +9,7 @@ const App: React.FC = () => {
   return (
     <div>
       <DropdownMenu
-        trigger={<button>Open Dropdown</button>}
+        trigger={<button>˚…˚</button>}
         content={[
           <span key="1">Item 1</span>,
           <span key="2">Item 2</span>,

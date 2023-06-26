@@ -1,17 +1,10 @@
-import React, {
-	useState,
-	useEffect,
-	useRef,
-	// ReactNode,
-	ReactElement,
-	// JSXElementConstructor,
-} from 'react';
+import React, { useState, useEffect, useRef, ReactElement } from 'react';
 import './DropdownMenu.css';
 
 type DropdownMenuProps = {
 	trigger: ReactElement<{ onClick: () => void }>;
-	content: ReactElement<{ children: string }> | ReactElement<{ children: string }>[] | null;
-	// onItemSelect?: (item: string) => void;
+	content: ReactElement<{ children: string }>[];
+	onItemSelect?: (item: string) => void;
 };
 
 type Position = 'bottom-right' | 'top-right' | 'bottom-left' | 'top-left';
@@ -33,10 +26,6 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content, onItemSel
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
 	}, []);
-
-	// const handleTriggerClick = () => {
-	// 	setIsOpen(!isOpen);
-	// };
 
 	const calculatePosition = () => {
 		if (!dropdownRef.current) return;
@@ -66,43 +55,34 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content, onItemSel
 		}
 	}, [isOpen]);
 
-	// const handleItemClick = (item: string) => {
-	// 	if (onItemSelect) {
-	// 		onItemSelect(item);
-	// 	}
-	// 	setIsOpen(false);
-	// };
-
 	const handleItemClick = (child: string) => {
 		console.log(`Clicked on item: ${child}`);
+		if (onItemSelect) {
+			onItemSelect(child);
+		}
 		setIsOpen(false);
 	};
+
 	const toggleMenu = () => {
 		setIsOpen((prevState) => !prevState);
 	};
 
 	return (
 		<div className='dropdown-menu' ref={dropdownRef}>
-			{/* <div className='trigger' onClick={handleTriggerClick}> */}
 			<div className='trigger' onClick={toggleMenu}>
 				{trigger}
 			</div>
 
-			{isOpen && content && (
+			{isOpen && (
 				<div className={`content ${position}`}>
-					{React.Children.map(content, (child: React.ReactElement<{ children: string }>, index) => {
-						if (child) {
-							return (
-								<div
-									key={index}
-									className='item'
-									onClick={() => handleItemClick(child.props.children as string)}>
-									{child}
-								</div>
-							);
-						}
-						return null;
-					})}
+					{content.map((child, index) => (
+						<div
+							key={index}
+							className='item'
+							onClick={() => handleItemClick(child.props.children as string)}>
+							{child}
+						</div>
+					))}
 				</div>
 			)}
 		</div>
