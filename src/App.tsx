@@ -21,34 +21,36 @@ const App: React.FC = () => {
 	};
 
 	const dropdownDirection: DropdownDirection = {
-		direction: ['up-left', 'up-right', 'down-left', 'down-right',  ],
+		direction: ['up-left', 'up-right', 'down-left', 'down-right'],
 	};
+	const dropdownContent = [
+		{
+			label: 'Поделиться в социальных сетях',
+			icon: <Share2 />,
+			onClick: handleShareClick,
+		},
+		{
+			label: 'Редактировать страницу',
+			icon: <Edit />,
+			onClick: handleEditClick,
+		},
+		{
+			label: 'Удалить страницу',
+			icon: <Trash />,
+			onClick: handleDeleteClick,
+		},
+	];
 
 	return (
 		<div className='dropdown-container'>
 			{dropdownDirection.direction.map((item, index) => (
 				<div
 					key={`${index} Direction ${Date.now() + Math.random()}`}
-					className={` ${item}`}>
+					className={`dropdown-wrapper ${item}`}
+				>
 					<DropdownMenu
 						trigger={<button>…</button>}
-						content={[
-							{
-								label: 'Поделиться в социальных сетях',
-								icon: <Share2 />,
-								onClick: handleShareClick,
-							},
-							{
-								label: 'Редактировать страницу',
-								icon: <Edit />,
-								onClick: handleEditClick,
-							},
-							{
-								label: 'Удалить страницу',
-								icon: <Trash />,
-								onClick: handleDeleteClick,
-							},
-						]}
+						content={dropdownContent}
 					/>
 				</div>
 			))}

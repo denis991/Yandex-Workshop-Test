@@ -74,7 +74,7 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content }) => {
 			</div>
 
 			{isOpen && (
-				<div className={`content ${position}`}>
+				<div className={`content ${position}`} onClick={(e) => e.stopPropagation()}>
 					{content.map((item, index) => (
 						<div key={index} className='item' onClick={() => handleItemClick(item.onClick)}>
 							{item.icon}
