@@ -24,12 +24,46 @@
 }
 .down-left {
 	grid-area: C;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-content: flex-start;
+  align-items: flex-start;
+  // margin: 2vw;
 }
 .down-right {
 	grid-area: D;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  align-content: flex-end;
+  justify-content: flex-end;
 }
 .up-right .dropdown-menu,
 .down-right .dropdown-menu {
 	display: flex;
 	justify-content: flex-end;
+}
+/** ==================== new position content ==================== */
+// dropdown-wrapper
+.dropdown-menu__content{
+// .dropdown-container {
+	&:nth-child(2n) {
+		left: auto; // Отменить свойство left: 0;
+	}
+	&:nth-child(even) {
+    right: auto;
+		.bottom-right {
+      left: auto;
+		}
+	}
+	&:nth-child(odd) {
+    left: auto;
+    // right: auto;
+		// нечетные
+	}
+	&:nth-child(n+3) {
+	}
 }
