@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react';
-import './DropdownMenu.css';
+import './DropdownMenu.scss';
 
 type DropdownMenuProps = {
 	trigger: ReactElement<{ onClick: () => void }>;
@@ -69,14 +69,19 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content }) => {
 
 	return (
 		<div className='dropdown-menu' ref={dropdownRef}>
-			<div className='trigger' onClick={toggleMenu}>
+			<div className='dropdown-menu__trigger trigger' onClick={toggleMenu}>
 				{trigger}
 			</div>
 
 			{isOpen && (
-				<div className={`content ${position}`} onClick={(e) => e.stopPropagation()}>
+				<div
+					className={`dropdown-menu__content content ${position}`}
+					onClick={(e) => e.stopPropagation()}>
 					{content.map((item, index) => (
-						<div key={index} className='item' onClick={() => handleItemClick(item.onClick)}>
+						<div
+							key={index}
+							className='dropdown-menu__item item'
+							onClick={() => handleItemClick(item.onClick)}>
 							{item.icon}
 							{item.label}
 						</div>
@@ -86,5 +91,4 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content }) => {
 		</div>
 	);
 };
-
 export default DropdownMenu;

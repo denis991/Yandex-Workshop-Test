@@ -1,7 +1,7 @@
 import React from 'react';
 import DropdownMenu from './components/DropdownMenu/DropdownMenu';
 import { Share2, Edit, Trash } from 'react-feather'; // Подключение иконок из feather-icons
-import './App.css';
+import './App.scss';
 
 interface DropdownDirection {
 	direction: string[];
