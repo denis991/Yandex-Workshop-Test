@@ -66,6 +66,8 @@
 		left: auto;
     box-shadow: -5px 5px 19px rgb(0 0 0 / 25%);
 	}
+
+  // transform: translate3d(calc(100% - 262px), -120%, 0); // когда экран меньше 768px
 	.top-left {
 		transform: translate3d(calc(100% - 260px), -100%, 0);
     box-shadow: -5px -5px 19px rgb(0 0 0 / 25%);
