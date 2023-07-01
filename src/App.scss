@@ -14,7 +14,7 @@
 	// justify-content: space-between;
 	// align-items: center;
 	// flex-wrap: wrap;
-	// background: grey;
+
 	// align-content: space-between;
 
 	//** ================== v3 ================== */
@@ -23,7 +23,7 @@
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(2, 1fr);
 	grid-gap: 15px;
-	background: grey;
+	background: #f0f0f0;
 	> div:nth-child(-n + 2) {
 		align-self: start;
 	}
