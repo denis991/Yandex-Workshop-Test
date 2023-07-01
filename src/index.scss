@@ -39,37 +39,39 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
-  color: #000;
+  padding-bottom: 9px;
+//   border-radius: 8px;
+//   border: none;
+//   padding: 10px 20px;
+//   font-size: 1em;
+//   font-weight: 500;
+//   font-family: inherit;
+  // background-color: #ffffff;
+//   cursor: pointer;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+//   color: #000;
+// border-color: #000;
 }
 
 button:hover {
   background-color: #f9f9f9;
 }
 
-button:focus,
-button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.25);
-}
+// button:focus,
+// button:focus-visible {
+//   outline: none;
+//   box-shadow: 0 0 0 4px rgba(100, 108, 255, 0.25);
+// }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #068bff;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
+// @media (prefers-color-scheme: light) {
+//   :root {
+//     color: #068bff;
+//     background-color: #ffffff;
+//   }
+//   a:hover {
+//     color: #747bff;
+//   }
+//   button {
+//     background-color: #f9f9f9;
+//   }
+// }

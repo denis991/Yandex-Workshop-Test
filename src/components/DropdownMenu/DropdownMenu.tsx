@@ -8,6 +8,7 @@ type DropdownMenuProps = {
 		icon: ReactElement;
 		onClick: () => void;
 	}[];
+	classItem?: string;
 };
 
 type Position = 'bottom-right' | 'top-right' | 'bottom-left' | 'top-left';
@@ -42,19 +43,34 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content }) => {
 		const hasEnoughSpaceLeft = left - 260 >= 0;
 
 		if (hasEnoughSpaceBottom) {
-			setPosition('bottom-right');
+			if (hasEnoughSpaceLeft) {
+				setPosition('bottom-left');
+			} else if (hasEnoughSpaceRight) {
+				setPosition('bottom-right');
+			}
 		} else if (hasEnoughSpaceTop) {
-			setPosition('top-right');
-		} else if (hasEnoughSpaceLeft) {
-			setPosition('bottom-left');
-		} else if (hasEnoughSpaceRight) {
-			setPosition('top-left');
+			if (hasEnoughSpaceLeft) {
+				setPosition('top-left');
+			} else if (hasEnoughSpaceRight) {
+				setPosition('top-right');
+			}
 		}
+		return {
+			hasEnoughSpaceBottom,
+			hasEnoughSpaceTop,
+			hasEnoughSpaceRight,
+			hasEnoughSpaceLeft,
+			top,
+			bottom,
+			left,
+			right,
+		};
 	};
 
 	useEffect(() => {
 		if (isOpen) {
-			calculatePosition();
+			const hasEnough = calculatePosition();
+			console.log('hasEnough: ', hasEnough);
 		}
 	}, [isOpen]);
 
@@ -74,13 +90,11 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ trigger, content }) => {
 			</div>
 
 			{isOpen && (
-				<div
-					className={`dropdown-menu__content content ${position}`}
-					onClick={(e) => e.stopPropagation()}>
+				<div className={`dropdown-menu__content  ${position}`} onClick={(e) => e.stopPropagation()}>
 					{content.map((item, index) => (
 						<div
 							key={index}
-							className='dropdown-menu__item item'
+							className='dropdown-menu__item '
 							onClick={() => handleItemClick(item.onClick)}>
 							{item.icon}
 							{item.label}
