@@ -49,7 +49,7 @@ const App: React.FC = () => {
 					className={`dropdown-wrapper ${item}`}
 				>
 					<DropdownMenu
-						trigger={<button>…</button>}
+						trigger={<button className='dropdown-menu__trigger-button'>…</button>}
 						content={dropdownContent}
 					/>
 				</div>

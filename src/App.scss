@@ -1,23 +1,6 @@
 .dropdown-container {
-	// display: grid;
-	// grid-template-areas:
-	// 	'A B'
-	// 	'C D';
-	// grid-template-columns: repeat(2, 50%);
-	// grid-template-rows: repeat(2, 50%);
 	width: 100vw;
 	height: 100vh;
-	// background-color: #f9f9f9;
-
-	//** ================== v2 ================== */
-	// display: flex;
-	// justify-content: space-between;
-	// align-items: center;
-	// flex-wrap: wrap;
-
-	// align-content: space-between;
-
-	//** ================== v3 ================== */
 
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -33,33 +16,26 @@
 
 	.dropdown-wrapper {
 		padding: 20px;
-		/* border: 1px solid #ccc;
-	border-radius: 4px; */
-		// background-color: #fff;
 	}
-	//** =============================== button conteiner =============================== */
+
 	.up-left {
-		// grid-area: A;
+
 	}
 	.up-right {
-		// grid-area: B;
 		.dropdown-menu {
 			display: flex;
 			justify-content: flex-end;
 		}
 	}
 	.down-left {
-		// grid-area: C;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
 		justify-content: flex-end;
 		align-content: flex-start;
 		align-items: flex-start;
-		// margin: 2vw;
 	}
 	.down-right {
-		// grid-area: D;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
@@ -72,39 +48,26 @@
 		}
 	}
 	//** ==================== pop-up content ==================== */
-	$modified-indent: calc(100% - 20px);
 	.bottom-right {
 		left: auto;
 		top: 100%;
+    box-shadow: 5px 5px 19px rgb(0 0 0 / 25%);
 	}
 	.top-right {
 		position: absolute;
 		transform: translate3d(calc(100% - 27px), -100%, 0);
 		top: 0;
 		right: 0;
+    box-shadow: 5px -5px 19px rgb(0 0 0 / 25%);
 	}
 
 	.bottom-left {
 		top: 100%;
 		left: auto;
+    box-shadow: -5px 5px 19px rgb(0 0 0 / 25%);
 	}
 	.top-left {
 		transform: translate3d(calc(100% - 260px), -100%, 0);
+    box-shadow: -5px -5px 19px rgb(0 0 0 / 25%);
 	}
 }
-//** ==================== new position content ==================== */
-// .dropdown-wrapper{
-// .dropdown-menu__content {
-
-// 	&:nth-child(2n) {
-
-// 	}
-// 	&:nth-child(even) {
-
-// 	}
-// 	&:nth-child(odd) {
-
-// 	}
-// 	&:nth-child(n + 3) {
-// 	}
-// }
